@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshMart — Login</title>
+  <link rel="stylesheet" href="../cssFile/globalStyles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR (loaded from navbar.html) ===================== -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ===================== MAIN PAGE ===================== -->
+  <main class="page">
+
+    <section class="form-container">
+
+      <div class="section-title">
+        <h2>🛒 Welcome Back!</h2>
+        <p>Login to your FreshMart account to continue shopping fresh.</p>
+      </div>
+
+      <div id="login-alert"></div>
+
+      <form>
+
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" />
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" />
+        </div>
+
+        <div>
+          <label for="role">Login As</label>
+          <div class="select-container">
+            <select id="role">
+              <option value="">-- Select Role --</option>
+              <option value="customer">Customer</option>
+              <option value="admin">Admin / Manager</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" class="lg-button" onclick="handleLogin()">Login to FreshMart</button>
+        </div>
+
+        <div>
+          <p>Don't have an account? <a href="signup.html" class="link-button">Sign Up here</a></p>
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-container">
+
+      <div>
+        <h2>🛒 FreshMart</h2>
+        <p>Your trusted online grocery store. Fresh produce, fast delivery, and unbeatable prices — every single day.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="../index.html">🏠 Home</a>
+        <a href="products.html">🛍️ Products</a>
+        <a href="cart.html">🛒 Cart</a>
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="login.html">🔐 Login</a>
+        <a href="signup.html">📝 Sign Up</a>
+      </div>
+
+      <div>
+        <h4>Shop by Category</h4>
+        <a href="products.html?category=fruits">🍎 Fruits</a>
+        <a href="products.html?category=vegetables">🥦 Vegetables</a>
+        <a href="products.html?category=dairy">🥛 Dairy</a>
+        <a href="products.html?category=bakery">🍞 Bakery</a>
+        <a href="products.html?category=beverages">🧃 Beverages</a>
+        <a href="products.html?category=snacks">🍿 Snacks</a>
+      </div>
+
+      <div>
+        <h4>Contact Us</h4>
+        <p>📍 123 Green Market Street, Lahore, Pakistan</p>
+        <p>📞 +92 300 1234567</p>
+        <p>✉️ hello@freshmart.pk</p>
+        <p>🕐 Mon – Sat: 9am – 9pm</p>
+      </div>
+
+    </div>
+    <p>© 2025 FreshMart. All rights reserved. Made with 💚 in Pakistan.</p>
+  </footer>
+
+  <script src="../jsFile/jsFunctions.js"></script>
+  <script>
+    // ── Load Navbar ──
+    fetch('../navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+      })
+      .catch(() => console.warn('navbar.html not found'));
+
+    // ── Hamburger Toggle ──
+    function toggleMenu() {
+      const menu = document.getElementById("nav-menu");
+      if (menu) menu.classList.toggle("open");
+    }
+
+    // ── Login Handler ──
+    function handleLogin() {
+      const email    = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const role     = document.getElementById("role").value;
+      const alertBox = document.getElementById("login-alert");
+
+      alertBox.innerHTML = "";
+
+      if (email === "" || password === "" || role === "") {
+        alertBox.innerHTML = '<div class="alert alert-error">⚠️ Please fill in all fields before logging in.</div>';
+        return;
+      }
+
+      alertBox.innerHTML = '<div class="alert alert-success">✅ Login successful! Redirecting...</div>';
+
+      setTimeout(function () {
+        if (role === "admin") {
+          window.location.href = "dashboard.html";
+        } else {
+          window.location.href = "../index.html";
+        }
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>

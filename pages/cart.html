@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshMart — My Cart</title>
+  <link rel="stylesheet" href="../cssFile/globalStyles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR (loaded from navbar.html) ===================== -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ===================== MAIN PAGE ===================== -->
+  <main class="page">
+
+    <div class="section-title">
+      <h2>🛒 My Cart</h2>
+      <p>Review your items and proceed to checkout when ready.</p>
+    </div>
+
+    <!-- Empty Cart Message -->
+    <div id="empty-cart" class="no-results">
+      <h3>🛒 Your cart is empty!</h3>
+      <p>Looks like you haven't added anything yet. Start shopping now!</p>
+      <button class="lg-button" onclick="window.location.href='products.html'">Browse Products</button>
+    </div>
+
+    <!-- Cart Content -->
+    <div id="cart-content" class="cart-layout hidden">
+
+      <!-- ===================== CART ITEMS LIST ===================== -->
+      <div class="cart-list" id="cart-items-list"></div>
+
+      <!-- ===================== ORDER SUMMARY ===================== -->
+      <div class="cart-summary">
+        <h2>Order Summary</h2>
+
+        <div class="summary-row">
+          <p>Subtotal</p>
+          <span id="subtotal">Rs. 0</span>
+        </div>
+
+        <div class="summary-row">
+          <p>Delivery Fee</p>
+          <span id="delivery-fee">Rs. 99</span>
+        </div>
+
+        <div class="summary-row">
+          <p>Discount</p>
+          <span id="discount">Rs. 0</span>
+        </div>
+
+        <div class="summary-row">
+          <p>Total</p>
+          <span id="total">Rs. 99</span>
+        </div>
+
+        <!-- Promo Code -->
+        <div>
+          <input type="text" id="promo-input" placeholder="Enter promo code..." />
+        </div>
+        <button class="border-button" onclick="applyPromo()">Apply Promo Code</button>
+
+        <div id="promo-alert"></div>
+
+        <button class="lg-button" onclick="checkout()">Proceed to Checkout →</button>
+
+        <button class="border-button" onclick="clearCart()">🗑️ Clear Cart</button>
+
+        <a href="products.html" class="link-button">← Continue Shopping</a>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-container">
+
+      <div>
+        <h2>🛒 FreshMart</h2>
+        <p>Your trusted online grocery store. Fresh produce, fast delivery, and unbeatable prices — every single day.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="../index.html">🏠 Home</a>
+        <a href="products.html">🛍️ Products</a>
+        <a href="cart.html">🛒 Cart</a>
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="login.html">🔐 Login</a>
+        <a href="signup.html">📝 Sign Up</a>
+      </div>
+
+      <div>
+        <h4>Shop by Category</h4>
+        <a href="products.html?category=fruits">🍎 Fruits</a>
+        <a href="products.html?category=vegetables">🥦 Vegetables</a>
+        <a href="products.html?category=dairy">🥛 Dairy</a>
+        <a href="products.html?category=bakery">🍞 Bakery</a>
+        <a href="products.html?category=beverages">🧃 Beverages</a>
+        <a href="products.html?category=snacks">🍿 Snacks</a>
+      </div>
+
+      <div>
+        <h4>Contact Us</h4>
+        <p>📍 123 Green Market Street, Lahore, Pakistan</p>
+        <p>📞 +92 300 1234567</p>
+        <p>✉️ hello@freshmart.pk</p>
+        <p>🕐 Mon – Sat: 9am – 9pm</p>
+      </div>
+
+    </div>
+    <p>© 2025 FreshMart. All rights reserved. Made with 💚 in Pakistan.</p>
+  </footer>
+
+  <script src="../jsFile/jsFunctions.js"></script>
+  <script>
+
+    const DELIVERY_FEE = 99;
+    let promoApplied = false;
+
+    /* ===================== RENDER CART ===================== */
+    function renderCart() {
+      const cart        = JSON.parse(localStorage.getItem("freshmart-cart")) || [];
+      const list        = document.getElementById("cart-items-list");
+      const emptyMsg    = document.getElementById("empty-cart");
+      const cartContent = document.getElementById("cart-content");
+
+      list.innerHTML = "";
+
+      if (cart.length === 0) {
+        emptyMsg.classList.remove("hidden");
+        cartContent.classList.add("hidden");
+        return;
+      }
+
+      emptyMsg.classList.add("hidden");
+      cartContent.classList.remove("hidden");
+
+      cart.forEach(function (item, index) {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML =
+          '<img src="' + item.image + '" alt="' + item.name + '" />' +
+          '<div class="cart-item-info">' +
+            '<h3>' + item.name + '</h3>' +
+            '<p class="product-price">Rs. ' + item.price + '</p>' +
+            '<div class="qty-controls">' +
+              '<button onclick="changeQty(' + index + ', -1)">−</button>' +
+              '<span>' + item.qty + '</span>' +
+              '<button onclick="changeQty(' + index + ', 1)">+</button>' +
+            '</div>' +
+            '<p>Item Total: <strong>Rs. ' + (item.price * item.qty) + '</strong></p>' +
+          '</div>' +
+          '<button class="border-button sm-button" onclick="removeItem(' + index + ')">🗑️ Remove</button>';
+        list.appendChild(div);
+      });
+
+      updateSummary(cart);
+    }
+
+    /* ===================== CHANGE QUANTITY ===================== */
+    function changeQty(index, delta) {
+      let cart = JSON.parse(localStorage.getItem("freshmart-cart")) || [];
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+      localStorage.setItem("freshmart-cart", JSON.stringify(cart));
+      renderCart();
+      updateCartCount();
+    }
+
+    /* ===================== REMOVE ITEM ===================== */
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem("freshmart-cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("freshmart-cart", JSON.stringify(cart));
+      showAlert("🗑️ Item removed from cart.", "error");
+      renderCart();
+      updateCartCount();
+    }
+
+    /* ===================== CLEAR CART ===================== */
+    function clearCart() {
+      localStorage.removeItem("freshmart-cart");
+      promoApplied = false;
+      showAlert("🗑️ Cart cleared!", "error");
+      renderCart();
+      updateCartCount();
+    }
+
+    /* ===================== UPDATE SUMMARY ===================== */
+    function updateSummary(cart) {
+      const subtotal = cart.reduce(function (sum, item) {
+        return sum + item.price * item.qty;
+      }, 0);
+      const discount = promoApplied ? Math.round(subtotal * 0.2) : 0;
+      const total    = subtotal + DELIVERY_FEE - discount;
+
+      document.getElementById("subtotal").textContent      = "Rs. " + subtotal;
+      document.getElementById("delivery-fee").textContent  = "Rs. " + DELIVERY_FEE;
+      document.getElementById("discount").textContent      = "− Rs. " + discount;
+      document.getElementById("total").textContent         = "Rs. " + total;
+    }
+
+    /* ===================== APPLY PROMO ===================== */
+    function applyPromo() {
+      const code     = document.getElementById("promo-input").value.trim().toUpperCase();
+      const alertBox = document.getElementById("promo-alert");
+
+      if (promoApplied) {
+        alertBox.innerHTML = '<div class="alert alert-error">⚠️ Promo code already applied.</div>';
+        return;
+      }
+
+      if (code === "FRESH20") {
+        promoApplied = true;
+        alertBox.innerHTML = '<div class="alert alert-success">✅ Promo FRESH20 applied! 20% off.</div>';
+        const cart = JSON.parse(localStorage.getItem("freshmart-cart")) || [];
+        updateSummary(cart);
+      } else {
+        alertBox.innerHTML = '<div class="alert alert-error">❌ Invalid promo code. Try FRESH20.</div>';
+      }
+    }
+
+    /* ===================== CHECKOUT ===================== */
+    function checkout() {
+      const cart = JSON.parse(localStorage.getItem("freshmart-cart")) || [];
+      if (cart.length === 0) {
+        showAlert("⚠️ Your cart is empty!", "error");
+        return;
+      }
+      showAlert("✅ Order placed successfully! Thank you for shopping at FreshMart.", "success");
+      setTimeout(function () {
+        localStorage.removeItem("freshmart-cart");
+        renderCart();
+        updateCartCount();
+      }, 2000);
+    }
+
+    /* ===================== INIT ===================== */
+    document.addEventListener("DOMContentLoaded", function () {
+      renderCart();
+    });
+
+    // ── Load Navbar ──
+    fetch('../navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+      })
+      .catch(() => console.warn('navbar.html not found'));
+
+    // ── Hamburger Toggle ──
+    function toggleMenu() {
+      const menu = document.getElementById("nav-menu");
+      if (menu) menu.classList.toggle("open");
+    }
+
+  </script>
+
+</body>
+</html>

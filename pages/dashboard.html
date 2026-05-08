@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshMart — Dashboard</title>
+  <link rel="stylesheet" href="../cssFile/globalStyles.css" />
+  <link rel="stylesheet" href="../cssFile/dashboard.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <div id="navbar-placeholder"></div>
+
+  <main class="page">
+
+    <!-- ===================== WELCOME ===================== -->
+    <div class="section-title">
+      <h2>📊Dashboard</h2>
+      <p>Manage your FreshMart inventory, orders, and store activity.</p>
+    </div>
+
+    <!-- ===================== STAT CARDS ===================== -->
+    <div class="card-container">
+
+      <div class="stat-card">
+        <span>📦</span>
+        <h3>17</h3>
+        <p>Total Products</p>
+      </div>
+
+      <div class="stat-card">
+        <span>✅</span>
+        <h3>13</h3>
+        <p>In Stock</p>
+      </div>
+
+      <div class="stat-card">
+        <span>⚠️</span>
+        <h3>3</h3>
+        <p>Low Stock</p>
+      </div>
+
+      <div class="stat-card">
+        <span>❌</span>
+        <h3>2</h3>
+        <p>Out of Stock</p>
+      </div>
+
+      <div class="stat-card">
+        <span>🛒</span>
+        <h3 id="stat-cart">0</h3>
+        <p>Items in Cart</p>
+      </div>
+
+      <div class="stat-card">
+        <span>📋</span>
+        <h3>12</h3>
+        <p>Total Orders</p>
+      </div>
+
+    </div>
+
+    <!-- ===================== CRUD ACTION CARDS ===================== -->
+    <div class="section-title">
+      <h2>🗂️ Stock Management</h2>
+      <p>Perform all stock operations from here.</p>
+    </div>
+
+    <div class="card-container">
+
+      <div class="card" onclick="showSection('view-stock')">
+        <span>👁️</span>
+        <h3>View All Stock</h3>
+        <p>Browse and review the complete product inventory.</p>
+      </div>
+
+      <div class="card" onclick="showSection('insert-stock')">
+        <span>➕</span>
+        <h3>Insert New Stock</h3>
+        <p>Add a new product to the FreshMart inventory.</p>
+      </div>
+
+      <div class="card" onclick="showSection('update-stock')">
+        <span>✏️</span>
+        <h3>Update Stock</h3>
+        <p>Edit existing product details, price, or quantity.</p>
+      </div>
+
+      <div class="card" onclick="showSection('delete-stock')">
+        <span>🗑️</span>
+        <h3>Delete Stock</h3>
+        <p>Remove a product permanently from the inventory.</p>
+      </div>
+
+    </div>
+
+    <!-- ===================== VIEW ALL STOCK ===================== -->
+    <div id="view-stock" class="dash-section hidden">
+
+      <div class="section-title">
+        <h2>📋 All Stock</h2>
+        <p>Complete inventory list of all FreshMart products.</p>
+      </div>
+
+      <div class="table-container">
+        <table style="min-width:500px; max-width:100%;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Fresh Red Apples</td><td>Fruits</td><td>Rs. 120/kg</td><td>85 kg</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>2</td><td>Ripe Bananas</td><td>Fruits</td><td>Rs. 60/dozen</td><td>120 dozen</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>3</td><td>Sindhri Mangoes</td><td>Fruits</td><td>Rs. 350/kg</td><td>12 kg</td><td><span class="low-stock">Low Stock</span></td></tr>
+            <tr><td>4</td><td>Fresh Broccoli</td><td>Vegetables</td><td>Rs. 90/bunch</td><td>60 bunches</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>5</td><td>Fresh Tomatoes</td><td>Vegetables</td><td>Rs. 80/kg</td><td>0 kg</td><td><span class="out-stock">Out of Stock</span></td></tr>
+            <tr><td>6</td><td>Baby Spinach</td><td>Vegetables</td><td>Rs. 50/bundle</td><td>45 bundles</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>7</td><td>Whole Milk 1L</td><td>Dairy</td><td>Rs. 180/L</td><td>200 L</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>8</td><td>Plain Yogurt 500g</td><td>Dairy</td><td>Rs. 140/500g</td><td>8 units</td><td><span class="low-stock">Low Stock</span></td></tr>
+            <tr><td>9</td><td>Cheddar Cheese 200g</td><td>Dairy</td><td>Rs. 420/200g</td><td>35 units</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>10</td><td>Sourdough Bread</td><td>Bakery</td><td>Rs. 220/loaf</td><td>25 loaves</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>11</td><td>Butter Croissant</td><td>Bakery</td><td>Rs. 180/pack</td><td>0 packs</td><td><span class="out-stock">Out of Stock</span></td></tr>
+            <tr><td>12</td><td>Fresh Orange Juice</td><td>Beverages</td><td>Rs. 150/L</td><td>90 L</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>13</td><td>Organic Green Tea</td><td>Beverages</td><td>Rs. 320/50 bags</td><td>50 packs</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>14</td><td>Mixed Nuts 250g</td><td>Snacks</td><td>Rs. 480/250g</td><td>5 units</td><td><span class="low-stock">Low Stock</span></td></tr>
+            <tr><td>15</td><td>Granola Bar</td><td>Snacks</td><td>Rs. 95/bar</td><td>150 bars</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>16</td><td>Chicken Breast 1kg</td><td>Meat</td><td>Rs. 560/kg</td><td>40 kg</td><td><span class="in-stock">In Stock</span></td></tr>
+            <tr><td>17</td><td>Frozen Green Peas</td><td>Frozen</td><td>Rs. 130/500g</td><td>70 units</td><td><span class="in-stock">In Stock</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ===================== INSERT STOCK ===================== -->
+    <div id="insert-stock" class="dash-section hidden">
+
+      <div class="section-title">
+        <h2>➕ Insert New Stock</h2>
+        <p>Fill in the details to add a new product to the inventory.</p>
+      </div>
+
+      <div class="form-container">
+        <div>
+          <label>Product Name</label>
+          <input type="text" id="ins-name" placeholder="e.g. Fresh Strawberries" />
+        </div>
+        <div>
+          <label>Category</label>
+          <select id="ins-category">
+            <option value="">Select Category</option>
+            <option value="fruits">🍎 Fruits</option>
+            <option value="vegetables">🥦 Vegetables</option>
+            <option value="dairy">🥛 Dairy</option>
+            <option value="bakery">🍞 Bakery</option>
+            <option value="beverages">🧃 Beverages</option>
+            <option value="snacks">🍿 Snacks</option>
+            <option value="meat">🥩 Meat</option>
+            <option value="frozen">🧊 Frozen</option>
+          </select>
+        </div>
+        <div>
+          <label>Price (Rs.)</label>
+          <input type="number" id="ins-price" placeholder="e.g. 250" />
+        </div>
+        <div>
+          <label>Stock Quantity</label>
+          <input type="text" id="ins-qty" placeholder="e.g. 50 kg" />
+        </div>
+        <div>
+          <label>Description</label>
+          <textarea id="ins-desc" placeholder="Short product description..."></textarea>
+        </div>
+        <button onclick="insertStock()">➕ Add Product</button>
+      </div>
+
+    </div>
+
+    <!-- ===================== UPDATE STOCK ===================== -->
+    <div id="update-stock" class="dash-section hidden">
+
+      <div class="section-title">
+        <h2>✏️ Update Stock</h2>
+        <p>Select a product and update its details.</p>
+      </div>
+
+      <div class="form-container">
+        <div>
+          <label>Select Product</label>
+          <select id="upd-product">
+            <option value="">Select Product</option>
+            <option>Fresh Red Apples</option>
+            <option>Ripe Bananas</option>
+            <option>Sindhri Mangoes</option>
+            <option>Fresh Broccoli</option>
+            <option>Fresh Tomatoes</option>
+            <option>Baby Spinach</option>
+            <option>Whole Milk 1L</option>
+            <option>Plain Yogurt 500g</option>
+            <option>Cheddar Cheese 200g</option>
+            <option>Sourdough Bread</option>
+            <option>Butter Croissant</option>
+            <option>Fresh Orange Juice</option>
+            <option>Organic Green Tea</option>
+            <option>Mixed Nuts 250g</option>
+            <option>Granola Bar</option>
+            <option>Chicken Breast 1kg</option>
+            <option>Frozen Green Peas</option>
+          </select>
+        </div>
+        <div>
+          <label>New Price (Rs.)</label>
+          <input type="number" id="upd-price" placeholder="e.g. 200" />
+        </div>
+        <div>
+          <label>New Stock Quantity</label>
+          <input type="text" id="upd-qty" placeholder="e.g. 100 kg" />
+        </div>
+        <div>
+          <label>New Description</label>
+          <textarea id="upd-desc" placeholder="Updated description..."></textarea>
+        </div>
+        <button onclick="updateStock()">✏️ Update Product</button>
+      </div>
+
+    </div>
+
+    <!-- ===================== DELETE STOCK ===================== -->
+    <div id="delete-stock" class="dash-section hidden">
+
+      <div class="section-title">
+        <h2>🗑️ Delete Stock</h2>
+        <p>Select a product to permanently remove from inventory.</p>
+      </div>
+
+      <div class="form-container">
+        <div>
+          <label>Select Product to Delete</label>
+          <select id="del-product">
+            <option value="">Select Product</option>
+            <option>Fresh Red Apples</option>
+            <option>Ripe Bananas</option>
+            <option>Sindhri Mangoes</option>
+            <option>Fresh Broccoli</option>
+            <option>Fresh Tomatoes</option>
+            <option>Baby Spinach</option>
+            <option>Whole Milk 1L</option>
+            <option>Plain Yogurt 500g</option>
+            <option>Cheddar Cheese 200g</option>
+            <option>Sourdough Bread</option>
+            <option>Butter Croissant</option>
+            <option>Fresh Orange Juice</option>
+            <option>Organic Green Tea</option>
+            <option>Mixed Nuts 250g</option>
+            <option>Granola Bar</option>
+            <option>Chicken Breast 1kg</option>
+            <option>Frozen Green Peas</option>
+          </select>
+        </div>
+        <button class="border-button" onclick="confirmDelete()">🗑️ Delete Product</button>
+      </div>
+
+    </div>
+
+    <!-- ===================== CHART ===================== -->
+    <div class="section-title">
+      <h2>📈 Stock by Category</h2>
+      <p>Visual overview of stock levels across all categories.</p>
+    </div>
+
+    <div class="chart-wrapper">
+      <div class="chart-row">
+        <p>Fruits</p>
+        <div class="bar-track">
+          <div class="bar-fill" >72%</div>
+        </div>
+      </div>
+      <div class="chart-row">
+        <p>Vegetables</p>
+        <div class="bar-track">
+          <div class="bar-fill">55%</div>
+        </div>
+      </div>
+      <div class="chart-row">
+        <p>Dairy</p>
+        <div class="bar-track">
+          <div class="bar-fill" >85%</div>
+        </div>
+      </div>
+      <div class="chart-row">
+        <p>Bakery</p>
+        <div class="bar-track">
+          <div class="bar-fill" >40%</div>
+        </div>
+      </div>
+      <div class="chart-row">
+        <p>Beverages</p>
+        <div class="bar-track">
+          <div class="bar-fill" >90%</div>
+        </div>
+      </div>
+      <div class="chart-row">
+        <p>Snacks</p>
+        <div class="bar-track">
+          <div class="bar-fill">60%</div>
+        </div>
+      </div>
+      <div class="chart-row">
+        <p>Meat</p>
+        <div class="bar-track">
+          <div class="bar-fill">80%</div>
+        </div>
+      </div>
+      <div class="chart-row">
+        <p>Frozen</p>
+        <div class="bar-track">
+          <div class="bar-fill" >70%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== QUICK LINKS ===================== -->
+    <div class="section-title">
+      <h2>⚡ Quick Links</h2>
+      <p>Navigate to important sections quickly.</p>
+    </div>
+
+    <div class="card-container">
+      <a href="products.html" class="card">
+        <span>🛍️</span>
+        <h3>All Products</h3>
+        <p>Browse the full product listing page.</p>
+      </a>
+      <a href="cart.html" class="card">
+        <span>🛒</span>
+        <h3>View Cart</h3>
+        <p>Check current cart and proceed to checkout.</p>
+      </a>
+      <a href="products.html?category=fruits" class="card">
+        <span>🍎</span>
+        <h3>Fruits</h3>
+        <p>View all fruit products in inventory.</p>
+      </a>
+      <a href="products.html?category=vegetables" class="card">
+        <span>🥦</span>
+        <h3>Vegetables</h3>
+        <p>View all vegetable products in inventory.</p>
+      </a>
+      <a href="products.html?category=dairy" class="card">
+        <span>🥛</span>
+        <h3>Dairy</h3>
+        <p>View all dairy products in inventory.</p>
+      </a>
+      <a href="products.html?category=meat" class="card">
+        <span>🥩</span>
+        <h3>Meat</h3>
+        <p>View all meat products in inventory.</p>
+      </a>
+    </div>
+
+    <!-- ===================== RECENT ORDERS ===================== -->
+    <div class="section-title">
+      <h2>🕐 Recent Orders</h2>
+      <p>Latest customer orders at FreshMart.</p>
+    </div>
+
+    <div class="table-container">
+      <table style="min-width:400px; max-width:100%;">
+        <thead>
+          <tr>
+            <th>Order #</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#FM-1024</td><td>Apples, Milk, Bread</td><td>Rs. 520</td><td>05 May 2025</td>
+            <td><span class="in-stock">Delivered</span></td>
+          </tr>
+          <tr>
+            <td>#FM-1023</td><td>Mangoes, Yogurt</td><td>Rs. 490</td><td>02 May 2025</td>
+            <td><span class="in-stock">Delivered</span></td>
+          </tr>
+          <tr>
+            <td>#FM-1022</td><td>Chicken, Spinach</td><td>Rs. 690</td><td>28 Apr 2025</td>
+            <td><span class="low-stock">Processing</span></td>
+          </tr>
+          <tr>
+            <td>#FM-1021</td><td>Green Tea, Nuts</td><td>Rs. 800</td><td>25 Apr 2025</td>
+            <td><span class="in-stock">Delivered</span></td>
+          </tr>
+          <tr>
+            <td>#FM-1020</td><td>Cheese, Croissant</td><td>Rs. 600</td><td>20 Apr 2025</td>
+            <td><span class="out-stock">Cancelled</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h2>🛒 FreshMart</h2>
+        <p>Your trusted online grocery store. Fresh produce, fast delivery, and unbeatable prices — every single day.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="../index.html">🏠 Home</a>
+        <a href="products.html">🛍️ Products</a>
+        <a href="cart.html">🛒 Cart</a>
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="login.html">🔐 Login</a>
+        <a href="signup.html">📝 Sign Up</a>
+      </div>
+      <div>
+        <h4>Shop by Category</h4>
+        <a href="products.html?category=fruits">🍎 Fruits</a>
+        <a href="products.html?category=vegetables">🥦 Vegetables</a>
+        <a href="products.html?category=dairy">🥛 Dairy</a>
+        <a href="products.html?category=bakery">🍞 Bakery</a>
+        <a href="products.html?category=beverages">🧃 Beverages</a>
+        <a href="products.html?category=snacks">🍿 Snacks</a>
+      </div>
+      <div>
+        <h4>Contact Us</h4>
+        <p>📍 123 Green Market Street, Lahore, Pakistan</p>
+        <p>📞 +92 300 1234567</p>
+        <p>✉️ hello@freshmart.pk</p>
+        <p>🕐 Mon – Sat: 9am – 9pm</p>
+      </div>
+    </div>
+    <p>© 2025 FreshMart. All rights reserved. Made with 💚 in Pakistan.</p>
+  </footer>
+
+  <script src="../jsFile/jsFunctions.js"></script>
+  <script>
+
+    fetch('../navbar.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('navbar-placeholder').innerHTML = html; })
+      .catch(() => console.warn('navbar.html not found'));
+
+    function toggleMenu() {
+      var menu = document.getElementById("nav-menu");
+      if (menu) menu.classList.toggle("open");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var cart  = JSON.parse(localStorage.getItem("freshmart-cart")) || [];
+      var total = cart.reduce(function (sum, item) { return sum + item.qty; }, 0);
+      var el    = document.getElementById("stat-cart");
+      if (el) el.textContent = total;
+    });
+
+    var allSections = ["view-stock", "insert-stock", "update-stock", "delete-stock"];
+
+    function showSection(id) {
+      allSections.forEach(function (sec) {
+        var el = document.getElementById(sec);
+        if (el) el.classList.add("hidden");
+      });
+      var target = document.getElementById(id);
+      if (target) {
+        target.classList.remove("hidden");
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function insertStock() {
+      var name  = document.getElementById("ins-name").value.trim();
+      var cat   = document.getElementById("ins-category").value;
+      var price = document.getElementById("ins-price").value.trim();
+      var qty   = document.getElementById("ins-qty").value.trim();
+      if (!name || !cat || !price || !qty) {
+        showAlert("⚠️ Please fill in all fields.", "error");
+        return;
+      }
+      showAlert("✅ " + name + " added to inventory!", "success");
+      document.getElementById("ins-name").value     = "";
+      document.getElementById("ins-category").value = "";
+      document.getElementById("ins-price").value    = "";
+      document.getElementById("ins-qty").value      = "";
+      document.getElementById("ins-desc").value     = "";
+    }
+
+    function updateStock() {
+      var product = document.getElementById("upd-product").value;
+      var price   = document.getElementById("upd-price").value.trim();
+      var qty     = document.getElementById("upd-qty").value.trim();
+      if (!product) {
+        showAlert("⚠️ Please select a product.", "error");
+        return;
+      }
+      showAlert("✅ " + product + " updated successfully!", "success");
+      document.getElementById("upd-product").value = "";
+      document.getElementById("upd-price").value   = "";
+      document.getElementById("upd-qty").value     = "";
+      document.getElementById("upd-desc").value    = "";
+    }
+
+    function confirmDelete() {
+      var product = document.getElementById("del-product").value;
+      if (!product) {
+        showAlert("⚠️ Please select a product to delete.", "error");
+        return;
+      }
+      showAlert("🗑️ " + product + " deleted from inventory!", "error");
+      document.getElementById("del-product").value = "";
+    }
+
+  </script>
+
+</body>
+</html>

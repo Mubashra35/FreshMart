@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshMart — Fresh Groceries Delivered</title>
+  <link rel="stylesheet" href="cssFile/globalStyles.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR (loaded from navbar.html) ===================== -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- ===================== MAIN PAGE ===================== -->
+  <main class="page">
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section class="hero">
+      <div class="hero-text">
+        <span class="badge">🌿 100% Fresh &amp; Organic</span>
+        <h1>Fresh Groceries,<br/>Delivered to Your Door</h1>
+        <p>Shop from thousands of fresh fruits, vegetables, dairy, and more — all sourced locally and delivered within hours.</p>
+        <div>
+          <button class="lg-button" onclick="window.location.href='pages/products.html'">🛒 Shop Now</button>
+          <button class="border-button lg-button" onclick="window.location.href='pages/products.html'">Browse Categories</button>
+        </div>
+      </div>
+      <img src="sources/basket.jpeg" alt="Fresh groceries basket" />
+    </section>
+
+    <!-- ===================== CATEGORIES ===================== -->
+    <section>
+      <div class="section-title">
+        <h2>Shop by Category</h2>
+        <p>Find exactly what you need — from farm-fresh produce to pantry staples.</p>
+      </div>
+
+      <div class="category-grid">
+        <a href="pages/products.html?category=fruits" class="category-item">
+          <img src="sources/fruits.jpg" alt="Fruits" />
+          <span>🍎 Fruits</span>
+        </a>
+        <a href="pages/products.html?category=vegetables" class="category-item">
+          <img src="sources/veges.jpg" alt="Vegetables" />
+          <span>Vegetables</span>
+        </a>
+        <a href="pages/products.html?category=dairy" class="category-item">
+          <img src="sources/dairy.jpg" alt="Dairy" />
+          <span>🥛 Dairy</span>
+        </a>
+        <a href="pages/products.html?category=bakery" class="category-item">
+          <img src="sources/bakery.jpg" alt="Bakery" />
+          <span>🍞 Bakery</span>
+        </a>
+        <a href="pages/products.html?category=beverages" class="category-item">
+          <img src="sources/beverages.jpeg" alt="Beverages" />
+          <span>Beverages</span>
+        </a>
+        <a href="pages/products.html?category=snacks" class="category-item">
+          <img src="sources/snacks.jpg" alt="Snacks" />
+          <span>🍿 Snacks</span>
+        </a>
+        <a href="pages/products.html?category=meat" class="category-item">
+          <img src="sources/meat.jpg" alt="Meat" />
+          <span>🥩 Meat</span>
+        </a>
+        <a href="pages/products.html?category=frozen" class="category-item">
+          <img src="sources/frozen.jpg" alt="Frozen" />
+          <span>🧊 Frozen</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED PRODUCTS ===================== -->
+    <section>
+      <div class="section-title">
+        <h2>Featured Products</h2>
+        <p>Handpicked fresh items — best quality at the best price.</p>
+      </div>
+
+      <div class="card-container">
+
+        <div class="product-card" data-name="red apple" data-price="120" data-category="fruits">
+          <img src="sources/apples.jpeg" alt="Fresh Red Apples" />
+          <div class="product-info">
+            <span class="badge">Organic</span>
+            <h3>Fresh Red Apples</h3>
+            <p>Crisp, sweet, and farm-fresh apples from local orchards.</p>
+            <div>
+              <span class="product-price">Rs. 120/kg</span>
+              <span class="product-old-price">Rs. 160/kg</span>
+            </div>
+          </div>
+          <button onclick="addToCart('Fresh Red Apples', 120, 'sources/product-apple.png')">Add to Cart 🛒</button>
+        </div>
+
+        <div class="product-card" data-name="broccoli" data-price="90" data-category="vegetables">
+          <img src="sources/broccoli.jpg" alt="Fresh Broccoli" />
+          <div class="product-info">
+            <span class="badge">Fresh</span>
+            <h3>Fresh Broccoli</h3>
+            <p>Nutrient-packed broccoli, harvested fresh every morning.</p>
+            <div>
+              <span class="product-price">Rs. 90/bunch</span>
+              <span class="product-old-price">Rs. 120/bunch</span>
+            </div>
+          </div>
+          <button onclick="addToCart('Fresh Broccoli', 90, 'sources/product-broccoli.png')">Add to Cart 🛒</button>
+        </div>
+
+        <div class="product-card" data-name="whole milk" data-price="180" data-category="dairy">
+          <img src="sources/milk.jpg" alt="Whole Milk" />
+          <div class="product-info">
+            <span class="badge">Dairy</span>
+            <h3>Whole Milk 1L</h3>
+            <p>Pure, full-cream milk from grass-fed cows. No preservatives.</p>
+            <div>
+              <span class="product-price">Rs. 180/L</span>
+            </div>
+          </div>
+          <button onclick="addToCart('Whole Milk 1L', 180, 'sources/product-milk.png')">Add to Cart 🛒</button>
+        </div>
+
+        <div class="product-card" data-name="sourdough bread" data-price="220" data-category="bakery">
+          <img src="sources/sourdough.jpg" alt="Sourdough Bread" />
+          <div class="product-info">
+            <span class="badge">Bakery</span>
+            <h3>Sourdough Bread</h3>
+            <p>Freshly baked sourdough, crusty outside and soft inside.</p>
+            <div>
+              <span class="product-price">Rs. 220/loaf</span>
+              <span class="product-old-price">Rs. 260/loaf</span>
+            </div>
+          </div>
+          <button onclick="addToCart('Sourdough Bread', 220, 'sources/product-bread.png')">Add to Cart 🛒</button>
+        </div>
+
+        <div class="product-card" data-name="orange juice" data-price="150" data-category="beverages">
+          <img src="sources/orrange.jpg" alt="Orange Juice" />
+          <div class="product-info">
+            <span class="badge-accent badge">Sale</span>
+            <h3>Fresh Orange Juice</h3>
+            <p>100% natural squeezed orange juice. No added sugar.</p>
+            <div>
+              <span class="product-price">Rs. 150/L</span>
+              <span class="product-old-price">Rs. 200/L</span>
+            </div>
+          </div>
+          <button onclick="addToCart('Fresh Orange Juice', 150, 'sources/product-juice.png')">Add to Cart 🛒</button>
+        </div>
+
+        <div class="product-card" data-name="bananas" data-price="60" data-category="fruits">
+          <img src="sources/bananas.jpg" alt="Bananas" />
+          <div class="product-info">
+            <span class="badge">Fresh</span>
+            <h3>Ripe Bananas</h3>
+            <p>Sweet, ripe bananas — perfect for breakfast or snacking.</p>
+            <div>
+              <span class="product-price">Rs. 60/dozen</span>
+            </div>
+          </div>
+          <button onclick="addToCart('Ripe Bananas', 60, 'sources/product-banana.png')">Add to Cart 🛒</button>
+        </div>
+
+      </div>
+
+      <div class="section-title">
+        <button class="border-button" onclick="window.location.href='pages/products.html'">View All Products →</button>
+      </div>
+    </section>
+
+    <!-- ===================== PROMO BANNER ===================== -->
+    <section class="promo-banner">
+      <div>
+        <span class="badge badge-accent">Limited Time Offer</span>
+        <h2>Get 20% Off Your<br/>First Order!</h2>
+        <p>Use code <strong>FRESH20</strong> at checkout. Fresh produce, amazing prices.</p>
+        <button class="lg-button" onclick="window.location.href='pages/products.html'">Claim Offer 🎉</button>
+      </div>
+    </section>
+
+    <!-- ===================== WHY CHOOSE US ===================== -->
+    <section>
+      <div class="section-title">
+        <h2>Why Choose FreshMart?</h2>
+        <p>We deliver more than just groceries — we deliver freshness, trust, and convenience.</p>
+      </div>
+
+      <div class="features-row">
+        <div class="feature-item">
+          <span class="feature-icon">🌿</span>
+          <h3>100% Organic</h3>
+          <p>All our products are sourced from certified organic farms.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🚚</span>
+          <h3>Fast Delivery</h3>
+          <p>Same-day delivery available. Fresh to your door in hours.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💰</span>
+          <h3>Best Prices</h3>
+          <p>Competitive prices with weekly deals and seasonal discounts.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🔒</span>
+          <h3>Secure Payment</h3>
+          <p>100% secure checkout with multiple payment options.</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">↩️</span>
+          <h3>Easy Returns</h3>
+          <p>Not satisfied? Return within 24 hours, no questions asked.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section>
+      <div class="section-title">
+        <h2>What Our Customers Say</h2>
+        <p>Thousands of happy customers trust FreshMart every day.</p>
+      </div>
+
+      <div class="card-container">
+        <div class="testimonial-card">
+          <p>"FreshMart has completely changed how I shop for groceries. Everything is always so fresh and the delivery is super fast!"</p>
+          <div class="testimonial-author"><div>
+              <h4>Sara K.</h4>
+              <span class="badge">⭐⭐⭐⭐⭐</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"Amazing quality products at great prices. I love the organic section — the vegetables are always farm-fresh!"</p>
+          <div class="testimonial-author">
+            <div>
+              <h4>Ahmed R.</h4>
+              <span class="badge">⭐⭐⭐⭐⭐</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>"Best grocery app I have used. The search filters make it so easy to find exactly what I need by price and category."</p>
+          <div class="testimonial-author">
+            <div>
+              <h4>Maria L.</h4>
+              <span class="badge">⭐⭐⭐⭐⭐</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NEWSLETTER ===================== -->
+    <section class="newsletter">
+      <h2>Stay Fresh — Subscribe to Our Newsletter</h2>
+      <p>Get weekly deals, seasonal recipes, and exclusive offers straight to your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="Enter your email address..." />
+        <button onclick="subscribeNewsletter()">Subscribe 🌿</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="footer-container">
+      <div>
+        <h2>🛒 FreshMart</h2>
+        <p>Your trusted online grocery store. Fresh produce, fast delivery, and unbeatable prices — every day.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="pages/products.html">Products</a>
+        <a href="pages/cart.html">Cart</a>
+        <a href="pages/dashboard.html">Dashboard</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="pages/products.html?category=fruits">🍎 Fruits</a>
+        <a href="pages/products.html?category=vegetables">🥦 Vegetables</a>
+        <a href="pages/products.html?category=dairy">🥛 Dairy</a>
+        <a href="pages/products.html?category=bakery">🍞 Bakery</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">FAQ</a>
+        <a href="#">Return Policy</a>
+        <a href="#">Track Order</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>📍 123 Green Market Street, Lahore</p>
+        <p>📞 +92 300 1234567</p>
+        <p>✉️ hello@freshmart.pk</p>
+      </div>
+    </div>
+    <p>© 2025 FreshMart. All rights reserved. Made with 💚 in Pakistan.</p>
+  </footer>
+
+  <script src="jsFile/jsFunctions.js"></script>
+  <script>
+    // ── Load Navbar from navbar.html ──
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+      })
+      .catch(() => {
+        // fallback: silently skip if file not found during local dev
+        console.warn('navbar.html not found');
+      });
+
+    // ── Newsletter ──
+    function subscribeNewsletter() {
+      const email = document.getElementById("newsletter-email").value;
+      if (email.trim() === "") {
+        showAlert("⚠️ Please enter your email address.", "error");
+        return;
+      }
+      showAlert("✅ Subscribed successfully! Welcome to FreshMart.", "success");
+      document.getElementById("newsletter-email").value = "";
+    }
+
+    // ── Hamburger Toggle ──
+    function toggleMenu() {
+      const menu = document.getElementById("nav-menu");
+      if (menu) menu.classList.toggle("open");
+    }
+  </script>
+
+</body>
+</html>
