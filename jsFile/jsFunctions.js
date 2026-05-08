@@ -126,6 +126,7 @@ function filterByCategory(category) {
    RUN ON PAGE LOAD
 ========================================================= */
 document.addEventListener("DOMContentLoaded", function () {
+
   updateCartCount();
 
   const saved = localStorage.getItem("theme");
@@ -139,4 +140,5 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("nav-menu").classList.remove("open");
     });
   });
+
 });
