@@ -10,39 +10,36 @@
 
   <!-- ===================== NAVBAR ===================== -->
   <nav>
-  <a href="../index.html">🛒 FreshMart</a>
+    <a href="../index.html">🛒 FreshMart</a>
 
-  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-  <ul id="nav-menu">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="products.html">Products</a></li>
-    <li class="dropdown">
-      <a href="#">Categories ▾</a>
-      <div class="dropdown-menu">
-        <a href="products.html?category=fruits">🍎 Fruits</a>
-        <a href="products.html?category=vegetables">🥦 Vegetables</a>
-        <a href="products.html?category=dairy">🥛 Dairy</a>
-        <a href="products.html?category=bakery">🍞 Bakery</a>
-        <a href="products.html?category=beverages">🧃 Beverages</a>
-      </div>
-    </li>
-    
-    <li><a href="cart.html">Cart</a></li>
-    <li><a href="dashboard.html">Dashboard</a></li>
-    
-    <li><button onclick="window.location.href='login.html'">Login</button></li>
-  </ul>
-</nav>
+    <ul id="nav-menu">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li class="dropdown">
+        <a href="#">Categories ▾</a>
+        <div class="dropdown-menu">
+          <a href="products.html?category=fruits">🍎 Fruits</a>
+          <a href="products.html?category=vegetables">🥦 Vegetables</a>
+          <a href="products.html?category=dairy">🥛 Dairy</a>
+          <a href="products.html?category=bakery">🍞 Bakery</a>
+          <a href="products.html?category=beverages">🧃 Beverages</a>
+        </div>
+      </li>
+      <li><a href="cart.html">🛒 Cart</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><button onclick="window.location.href='login.html'">Login</button></li>
+    </ul>
+  </nav>
 
   <!-- ===================== MAIN PAGE ===================== -->
   <main class="page">
 
-    <!-- ===================== PAGE HEADING ===================== -->
     <div class="section-title">
       <h2>🛍️ All Products</h2>
       <p>Browse our full range of fresh, organic, and locally sourced groceries.</p>
@@ -51,12 +48,7 @@
     <!-- ===================== FILTER BAR ===================== -->
     <div class="filter-bar">
 
-      <input
-        type="text"
-        id="search-input"
-        placeholder="🔍 Search products..."
-        oninput="filterProducts(this.value)"
-      />
+      <input type="text" id="search-input" placeholder="🔍 Search products..." oninput="filterProducts(this.value)" />
 
       <div class="select-container">
         <select id="category-filter" onchange="filterByCategory(this.value)">
@@ -102,236 +94,236 @@
       <div class="product-card" data-name="red apple" data-price="120" data-category="fruits">
         <img src="../sources/apples.jpeg" alt="Fresh Red Apples" />
         <div class="product-info">
-          <span>Organic</span>
+          <span class="badge">Organic</span>
           <h3>Fresh Red Apples</h3>
           <p>Crisp, sweet, and farm-fresh apples from local orchards.</p>
           <div>
-            <strong>Rs. 120/kg</strong>
-            <s>Rs. 160/kg</s>
+            <span class="product-price">Rs. 120/kg</span>
+            <span class="product-old-price">Rs. 160/kg</span>
           </div>
         </div>
-        <button onclick="addToCart('Fresh Red Apples', 120, '../sources/product-apple.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Fresh Red Apples', 120, '../sources/apples.jpeg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="bananas" data-price="60" data-category="fruits">
         <img src="../sources/bananas.jpg" alt="Bananas" />
         <div class="product-info">
-          <span>Fresh</span>
+          <span class="badge">Fresh</span>
           <h3>Ripe Bananas</h3>
           <p>Sweet, ripe bananas — perfect for breakfast or snacking.</p>
           <div>
-            <strong>Rs. 60/dozen</strong>
+            <span class="product-price">Rs. 60/dozen</span>
           </div>
         </div>
-        <button onclick="addToCart('Ripe Bananas', 60, '../sources/product-banana.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Ripe Bananas', 60, '../sources/bananas.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="mangoes" data-price="350" data-category="fruits">
         <img src="../sources/mangoes.jpg" alt="Mangoes" />
         <div class="product-info">
-          <span class="accent">Sale</span>
+          <span class="badge badge-accent">Sale</span>
           <h3>Sindhri Mangoes</h3>
           <p>Premium Pakistani Sindhri mangoes — sweet, juicy, and aromatic.</p>
           <div>
-            <strong>Rs. 350/kg</strong>
-            <s>Rs. 450/kg</s>
+            <span class="product-price">Rs. 350/kg</span>
+            <span class="product-old-price">Rs. 450/kg</span>
           </div>
         </div>
-        <button onclick="addToCart('Sindhri Mangoes', 350, '../sources/product-mango.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Sindhri Mangoes', 350, '../sources/mangoes.jpg')">Add to Cart 🛒</button>
       </div>
 
       <!-- Vegetables -->
       <div class="product-card" data-name="broccoli" data-price="90" data-category="vegetables">
         <img src="../sources/broccoli.jpg" alt="Fresh Broccoli" />
         <div class="product-info">
-          <span>Fresh</span>
+          <span class="badge">Fresh</span>
           <h3>Fresh Broccoli</h3>
           <p>Nutrient-packed broccoli, harvested fresh every morning.</p>
           <div>
-            <strong>Rs. 90/bunch</strong>
-            <s>Rs. 120/bunch</s>
+            <span class="product-price">Rs. 90/bunch</span>
+            <span class="product-old-price">Rs. 120/bunch</span>
           </div>
         </div>
-        <button onclick="addToCart('Fresh Broccoli', 90, '../sources/product-broccoli.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Fresh Broccoli', 90, '../sources/broccoli.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="tomatoes" data-price="80" data-category="vegetables">
         <img src="../sources/tomatoes.jpg" alt="Tomatoes" />
         <div class="product-info">
-          <span>Organic</span>
+          <span class="badge">Organic</span>
           <h3>Fresh Tomatoes</h3>
           <p>Vine-ripened tomatoes, rich in flavor and nutrients.</p>
           <div>
-            <strong>Rs. 80/kg</strong>
+            <span class="product-price">Rs. 80/kg</span>
           </div>
         </div>
-        <button onclick="addToCart('Fresh Tomatoes', 80, '../sources/product-tomato.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Fresh Tomatoes', 80, '../sources/tomatoes.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="spinach" data-price="50" data-category="vegetables">
         <img src="../sources/spinach.jpeg" alt="Spinach" />
         <div class="product-info">
-          <span>Fresh</span>
+          <span class="badge">Fresh</span>
           <h3>Baby Spinach</h3>
           <p>Tender baby spinach leaves, washed and ready to eat.</p>
           <div>
-            <strong>Rs. 50/bundle</strong>
+            <span class="product-price">Rs. 50/bundle</span>
           </div>
         </div>
-        <button onclick="addToCart('Baby Spinach', 50, '../sources/product-spinach.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Baby Spinach', 50, '../sources/spinach.jpeg')">Add to Cart 🛒</button>
       </div>
 
       <!-- Dairy -->
       <div class="product-card" data-name="whole milk" data-price="180" data-category="dairy">
         <img src="../sources/milk.jpg" alt="Whole Milk" />
         <div class="product-info">
-          <span>Dairy</span>
+          <span class="badge">Dairy</span>
           <h3>Whole Milk 1L</h3>
           <p>Pure, full-cream milk from grass-fed cows. No preservatives.</p>
           <div>
-            <strong>Rs. 180/L</strong>
+            <span class="product-price">Rs. 180/L</span>
           </div>
         </div>
-        <button onclick="addToCart('Whole Milk 1L', 180, '../sources/product-milk.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Whole Milk 1L', 180, '../sources/milk.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="yogurt" data-price="140" data-category="dairy">
         <img src="../sources/yogurt.jpg" alt="Yogurt" />
         <div class="product-info">
-          <span>Dairy</span>
+          <span class="badge">Dairy</span>
           <h3>Plain Yogurt 500g</h3>
           <p>Creamy, thick yogurt made from fresh farm milk daily.</p>
           <div>
-            <strong>Rs. 140/500g</strong>
-            <s>Rs. 170/500g</s>
+            <span class="product-price">Rs. 140/500g</span>
+            <span class="product-old-price">Rs. 170/500g</span>
           </div>
         </div>
-        <button onclick="addToCart('Plain Yogurt 500g', 140, '../sources/product-yogurt.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Plain Yogurt 500g', 140, '../sources/yogurt.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="cheese" data-price="420" data-category="dairy">
         <img src="../sources/cheese.jpg" alt="Cheese" />
         <div class="product-info">
-          <span>Premium</span>
+          <span class="badge">Premium</span>
           <h3>Cheddar Cheese 200g</h3>
           <p>Aged cheddar with rich, sharp flavor — perfect for cooking.</p>
           <div>
-            <strong>Rs. 420/200g</strong>
+            <span class="product-price">Rs. 420/200g</span>
           </div>
         </div>
-        <button onclick="addToCart('Cheddar Cheese 200g', 420, '../sources/product-cheese.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Cheddar Cheese 200g', 420, '../sources/cheese.jpg')">Add to Cart 🛒</button>
       </div>
 
       <!-- Bakery -->
       <div class="product-card" data-name="sourdough bread" data-price="220" data-category="bakery">
         <img src="../sources/sourdough.jpg" alt="Sourdough Bread" />
         <div class="product-info">
-          <span>Bakery</span>
+          <span class="badge">Bakery</span>
           <h3>Sourdough Bread</h3>
           <p>Freshly baked sourdough, crusty outside and soft inside.</p>
           <div>
-            <strong>Rs. 220/loaf</strong>
-            <s>Rs. 260/loaf</s>
+            <span class="product-price">Rs. 220/loaf</span>
+            <span class="product-old-price">Rs. 260/loaf</span>
           </div>
         </div>
-        <button onclick="addToCart('Sourdough Bread', 220, '../sources/product-bread.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Sourdough Bread', 220, '../sources/sourdough.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="croissant" data-price="180" data-category="bakery">
         <img src="../sources/croissant.jpg" alt="Croissant" />
         <div class="product-info">
-          <span>Bakery</span>
+          <span class="badge">Bakery</span>
           <h3>Butter Croissant</h3>
           <p>Flaky, buttery croissants baked fresh every morning.</p>
           <div>
-            <strong>Rs. 180/pack of 4</strong>
+            <span class="product-price">Rs. 180/pack of 4</span>
           </div>
         </div>
-        <button onclick="addToCart('Butter Croissant', 180, '../sources/product-croissant.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Butter Croissant', 180, '../sources/croissant.jpg')">Add to Cart 🛒</button>
       </div>
 
       <!-- Beverages -->
       <div class="product-card" data-name="orange juice" data-price="150" data-category="beverages">
         <img src="../sources/orrange.jpg" alt="Orange Juice" />
         <div class="product-info">
-          <span class="accent">Sale</span>
+          <span class="badge badge-accent">Sale</span>
           <h3>Fresh Orange Juice</h3>
           <p>100% natural squeezed orange juice. No added sugar.</p>
           <div>
-            <strong>Rs. 150/L</strong>
-            <s>Rs. 200/L</s>
+            <span class="product-price">Rs. 150/L</span>
+            <span class="product-old-price">Rs. 200/L</span>
           </div>
         </div>
-        <button onclick="addToCart('Fresh Orange Juice', 150, '../sources/product-juice.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Fresh Orange Juice', 150, '../sources/orrange.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="green tea" data-price="320" data-category="beverages">
         <img src="../sources/tea.jpg" alt="Green Tea" />
         <div class="product-info">
-          <span>Organic</span>
+          <span class="badge">Organic</span>
           <h3>Organic Green Tea</h3>
           <p>Premium organic green tea — refreshing and full of antioxidants.</p>
           <div>
-            <strong>Rs. 320/50 bags</strong>
+            <span class="product-price">Rs. 320/50 bags</span>
           </div>
         </div>
-        <button onclick="addToCart('Organic Green Tea', 320, '../sources/product-tea.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Organic Green Tea', 320, '../sources/tea.jpg')">Add to Cart 🛒</button>
       </div>
 
       <!-- Snacks -->
       <div class="product-card" data-name="mixed nuts" data-price="480" data-category="snacks">
         <img src="../sources/snacks.jpg" alt="Mixed Nuts" />
         <div class="product-info">
-          <span>Premium</span>
+          <span class="badge">Premium</span>
           <h3>Mixed Nuts 250g</h3>
           <p>Premium blend of almonds, cashews, walnuts, and pistachios.</p>
           <div>
-            <strong>Rs. 480/250g</strong>
+            <span class="product-price">Rs. 480/250g</span>
           </div>
         </div>
-        <button onclick="addToCart('Mixed Nuts 250g', 480, '../sources/product-nuts.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Mixed Nuts 250g', 480, '../sources/snacks.jpg')">Add to Cart 🛒</button>
       </div>
 
       <div class="product-card" data-name="granola bar" data-price="95" data-category="snacks">
         <img src="../sources/granola.jpg" alt="Granola Bar" />
         <div class="product-info">
-          <span>Healthy</span>
+          <span class="badge">Healthy</span>
           <h3>Granola Bar</h3>
           <p>Wholesome oat granola bar with honey and dried fruits.</p>
           <div>
-            <strong>Rs. 95/bar</strong>
-            <s>Rs. 120/bar</s>
+            <span class="product-price">Rs. 95/bar</span>
+            <span class="product-old-price">Rs. 120/bar</span>
           </div>
         </div>
-        <button onclick="addToCart('Granola Bar', 95, '../sources/product-granola.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Granola Bar', 95, '../sources/granola.jpg')">Add to Cart 🛒</button>
       </div>
 
       <!-- Meat -->
       <div class="product-card" data-name="chicken breast" data-price="560" data-category="meat">
         <img src="../sources/chicken.jpg" alt="Chicken Breast" />
         <div class="product-info">
-          <span>Fresh</span>
+          <span class="badge">Fresh</span>
           <h3>Chicken Breast 1kg</h3>
           <p>Fresh, boneless chicken breast — halal certified.</p>
           <div>
-            <strong>Rs. 560/kg</strong>
+            <span class="product-price">Rs. 560/kg</span>
           </div>
         </div>
-        <button onclick="addToCart('Chicken Breast 1kg', 560, '../sources/product-chicken.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Chicken Breast 1kg', 560, '../sources/chicken.jpg')">Add to Cart 🛒</button>
       </div>
 
       <!-- Frozen -->
       <div class="product-card" data-name="frozen peas" data-price="130" data-category="frozen">
         <img src="../sources/peas.jpg" alt="Frozen Peas" />
         <div class="product-info">
-          <span>Frozen</span>
+          <span class="badge">Frozen</span>
           <h3>Frozen Green Peas</h3>
           <p>Sweet, tender green peas — flash frozen to lock in freshness.</p>
           <div>
-            <strong>Rs. 130/500g</strong>
+            <span class="product-price">Rs. 130/500g</span>
           </div>
         </div>
-        <button onclick="addToCart('Frozen Green Peas', 130, '../sources/product-peas.png')">Add to Cart 🛒</button>
+        <button onclick="addToCart('Frozen Green Peas', 130, '../sources/peas.jpg')">Add to Cart 🛒</button>
       </div>
 
     </div>
@@ -382,25 +374,9 @@
   <script src="../jsFile/jsFunctions.js"></script>
   <script>
 
-    // ── Load Navbar ──
-    fetch('../navbar.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('navbar-placeholder').innerHTML = html;
-      })
-      .catch(() => console.warn('navbar.html not found'));
+    function showCard(card) { card.classList.remove("hidden"); }
+    function hideCard(card) { card.classList.add("hidden"); }
 
-    // ── Hamburger Toggle ──
-    function toggleMenu() {
-      const menu = document.getElementById("nav-menu");
-      if (menu) menu.classList.toggle("open");
-    }
-
-    // ── Show / Hide card using CSS class ──
-    function showCard(card)  { card.classList.remove("hidden"); }
-    function hideCard(card)  { card.classList.add("hidden"); }
-
-    // ── Price Filter ──
     function applyPriceFilter(value) {
       document.querySelectorAll(".product-card").forEach(function (card) {
         if (value === "all") { showCard(card); return; }
@@ -413,7 +389,6 @@
       checkNoResults();
     }
 
-    // ── Sort Products ──
     function sortProducts(value) {
       const grid  = document.getElementById("product-grid");
       const cards = Array.from(grid.querySelectorAll(".product-card"));
@@ -426,17 +401,15 @@
       cards.forEach(function (card) { grid.appendChild(card); });
     }
 
-    // ── Reset Filters ──
     function resetFilters() {
-      document.getElementById("search-input").value        = "";
-      document.getElementById("category-filter").value     = "all";
-      document.getElementById("price-filter").value        = "all";
-      document.getElementById("sort-filter").value         = "default";
+      document.getElementById("search-input").value    = "";
+      document.getElementById("category-filter").value = "all";
+      document.getElementById("price-filter").value    = "all";
+      document.getElementById("sort-filter").value     = "default";
       document.querySelectorAll(".product-card").forEach(showCard);
       checkNoResults();
     }
 
-    // ── No Results Check ──
     function checkNoResults() {
       const visible = Array.from(document.querySelectorAll(".product-card"))
         .filter(function (c) { return !c.classList.contains("hidden"); });
@@ -446,21 +419,12 @@
         : noResults.classList.add("hidden");
     }
 
-    // ── Override filterProducts ──
     const _filterProducts = filterProducts;
-    filterProducts = function (query) {
-      _filterProducts(query);
-      checkNoResults();
-    };
+    filterProducts = function (query) { _filterProducts(query); checkNoResults(); };
 
-    // ── Override filterByCategory ──
     const _filterByCategory = filterByCategory;
-    filterByCategory = function (category) {
-      _filterByCategory(category);
-      checkNoResults();
-    };
+    filterByCategory = function (category) { _filterByCategory(category); checkNoResults(); };
 
-    // ── On Load: read URL param ──
     document.addEventListener("DOMContentLoaded", function () {
       const params = new URLSearchParams(window.location.search);
       const cat    = params.get("category");
